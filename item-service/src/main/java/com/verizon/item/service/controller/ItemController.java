@@ -25,7 +25,6 @@ public class ItemController {
         Item item = itemService.getItemById(id);
         return item != null ? ResponseEntity.ok(item) : ResponseEntity.notFound().build();
     }
-
     @PostMapping
     public Item createItem(@RequestBody Item item) {
         return itemService.createItem(item);
@@ -36,13 +35,11 @@ public class ItemController {
         Item item = itemService.updateItem(id, updatedItem);
         return item != null ? ResponseEntity.ok(item) : ResponseEntity.notFound().build();
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
         boolean deleted = itemService.deleteItem(id);
         return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
-
     @GetMapping("/name/{name}")
     public ResponseEntity<List<Item>> getItemByName(@PathVariable String name) {
         List<Item> items = itemService.getItemByName(name);
